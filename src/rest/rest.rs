@@ -5060,34 +5060,34 @@ impl<'a> KeycloakAdmin<'a> {
             .get(&format!("{}/auth/admin/realms/{}/users", self.url, realm))
             .bearer_auth(self.admin_token.get(&self.url).await?);
         if let Some(v) = brief_representation {
-            builder = builder.query(&("briefRepresentation", v));
+            builder = builder.query(&[("briefRepresentation", v)]);
         }
         if let Some(v) = email {
-            builder = builder.query(&("email", v));
+            builder = builder.query(&[("email", v)]);
         }
         if let Some(v) = enabled {
-            builder = builder.query(&("enabled", v));
+            builder = builder.query(&[("enabled", v)]);
         }
         if let Some(v) = exact {
-            builder = builder.query(&("exact", v));
+            builder = builder.query(&[("exact", v)]);
         }
         if let Some(v) = first {
-            builder = builder.query(&("first", v));
+            builder = builder.query(&[("first", v)]);
         }
         if let Some(v) = first_name {
-            builder = builder.query(&("firstName", v));
+            builder = builder.query(&[("firstName", v)]);
         }
         if let Some(v) = last_name {
-            builder = builder.query(&("lastName", v));
+            builder = builder.query(&[("lastName", v)]);
         }
         if let Some(v) = max {
-            builder = builder.query(&("max", v));
+            builder = builder.query(&[("max", v)]);
         }
         if let Some(v) = search {
-            builder = builder.query(&("search", v));
+            builder = builder.query(&[("search", v)]);
         }
         if let Some(v) = username {
-            builder = builder.query(&("username", v));
+            builder = builder.query(&[("username", v)]);
         }
         let response = builder.send().await?;
         Ok(error_check(response).await?.json().await?)
